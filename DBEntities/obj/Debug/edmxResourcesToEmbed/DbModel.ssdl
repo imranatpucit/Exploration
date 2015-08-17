@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbExplorationModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tblStudent">
+    <Key>
+      <PropertyRef Name="intCode" />
+    </Key>
+    <Property Name="intCode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="strName" Type="nvarchar" MaxLength="50" />
+    <Property Name="strAddress" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="tblStudentStatus">
+    <Key>
+      <PropertyRef Name="intCode" />
+    </Key>
+    <Property Name="intCode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="intStudentCode" Type="int" Nullable="false" />
+    <Property Name="strStatus" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_tblStudentStatus_tblStudent">
+    <End Role="tblStudent" Type="Self.tblStudent" Multiplicity="1" />
+    <End Role="tblStudentStatus" Type="Self.tblStudentStatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblStudent">
+        <PropertyRef Name="intCode" />
+      </Principal>
+      <Dependent Role="tblStudentStatus">
+        <PropertyRef Name="intStudentCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbExplorationModelStoreContainer">
+    <EntitySet Name="tblStudent" EntityType="Self.tblStudent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblStudentStatus" EntityType="Self.tblStudentStatus" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_tblStudentStatus_tblStudent" Association="Self.FK_tblStudentStatus_tblStudent">
+      <End Role="tblStudent" EntitySet="tblStudent" />
+      <End Role="tblStudentStatus" EntitySet="tblStudentStatus" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

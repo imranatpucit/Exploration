@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbExplorationModelStoreContainer" CdmEntityContainer="dbExplorationEntities">
+    <EntitySetMapping Name="tblStudents">
+      <EntityTypeMapping TypeName="dbExplorationModel.tblStudent">
+        <MappingFragment StoreEntitySet="tblStudent">
+          <ScalarProperty Name="intCode" ColumnName="intCode" />
+          <ScalarProperty Name="strName" ColumnName="strName" />
+          <ScalarProperty Name="strAddress" ColumnName="strAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblStudentStatus">
+      <EntityTypeMapping TypeName="dbExplorationModel.tblStudentStatu">
+        <MappingFragment StoreEntitySet="tblStudentStatus">
+          <ScalarProperty Name="intCode" ColumnName="intCode" />
+          <ScalarProperty Name="intStudentCode" ColumnName="intStudentCode" />
+          <ScalarProperty Name="strStatus" ColumnName="strStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
